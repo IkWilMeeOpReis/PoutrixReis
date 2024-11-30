@@ -33,7 +33,7 @@
 </head>
 <body>
     <img src="race.jpg" alt="Megapore Grand Prix">
-    <audio autoplay controls>
+    <audio id="audio" controls>
         <source src="Poutrix_reis.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
@@ -98,10 +98,17 @@
             // Update the text according to the audio's current time
             audio.addEventListener("timeupdate", () => {
                 const currentTime = audio.currentTime;
-                const currentSentence = textData.find(
-                    (sentence) => currentTime >= sentence.start && currentTime <= sentence.end
-                );
-                textDiv.textContent = currentSentence ? currentSentence.text : "";
+                let currentSentence = null;
+
+                for (let i = 0; i < textData.length; i++) {
+                    const sentence = textData[i];
+                    if (currentTime >= sentence.start && currentTime <= sentence.end) {
+                        currentSentence = sentence.text;
+                        break;
+                    }
+                }
+
+                textDiv.textContent = currentSentence ? currentSentence : "";
             });
         });
     </script>
