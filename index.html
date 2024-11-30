@@ -3,30 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Podcast Page</title>
+    <title>Interactive Audio-Text Website</title>
     <style>
         body {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
+            font-family: Arial, sans-serif;
+            text-align: center;
             margin: 0;
+            padding: 0;
             background-color: #f4f4f4;
         }
         img {
             max-width: 100%;
             height: auto;
-            border-radius: 10px;
-            margin-bottom: 20px;
+        }
+        #text {
+            margin-top: 20px;
+            font-size: 20px;
         }
     </style>
 </head>
 <body>
-    <img src="race.jpg" alt="Descriptive Alt Text">
-    <audio autoplay controls>
-        <source src="Poutrix_reis.mp3" type="audio/mpeg">
+    <img src="image.jpg" alt="Description">
+    <audio id="audio" autoplay>
+        <source src="audio.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+    <div id="text"></div>
+    <script src="script.js"></script>
 </body>
 </html>
+
