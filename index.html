@@ -98,17 +98,18 @@
             // Update the text according to the audio's current time
             audio.addEventListener("timeupdate", () => {
                 const currentTime = audio.currentTime;
-                let currentSentence = null;
 
-                for (let i = 0; i < textData.length; i++) {
-                    const sentence = textData[i];
-                    if (currentTime >= sentence.start && currentTime <= sentence.end) {
-                        currentSentence = sentence.text;
-                        break;
-                    }
+                // Find the text that matches the current time
+                const currentSentence = textData.find(
+                    (sentence) => currentTime >= sentence.start && currentTime <= sentence.end
+                );
+
+                // Update the displayed text
+                if (currentSentence) {
+                    textDiv.textContent = currentSentence.text;
+                } else {
+                    textDiv.textContent = ""; // Clear text when no match
                 }
-
-                textDiv.textContent = currentSentence ? currentSentence : "";
             });
         });
     </script>
